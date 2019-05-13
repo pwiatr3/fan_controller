@@ -1,17 +1,27 @@
 #include "Controller.hpp"
+#include "SlowThermometer/SlowThermometer.hpp"
+#include "Fan.hpp"
+#include "LcdDisplay.hpp"
 #include <memory>
+#include <iostream>
 
-int main() {
-    Termomether t;
+int main()
+try {
+    SlowThermometer t;
     Fan f;
-    Controller c{t, std::move(f), 36.6};
-    c.run();
+    double targetTemperature = 36.6;
+    double tolerance = .5;
+    Controller oldController{t, f, targetTemperature, tolerance, nullptr};
+    oldController.updateRpm();
+    oldController.displayInfo();
 
-    c.stop();
+    Controller newController{t, f, targetTemperature, tolerance, std::shared_ptr<LcdDisplay>()};
+    newController.updateRpm();
+    newController.displayInfo();
 
-    Controller newController{t, std::move(f), 36.6};  // use after move
-    newController.run();
-
-    newController.stop();
     return 0;
+} catch (const std::exception & e) {
+    std::cerr << e.what() << '\n';
+    return -1;
 }
+

@@ -1,19 +1,13 @@
 #pragma once
-#include "Termomether.hpp"
+#include "SlowThermometer/SlowThermometer.hpp"
 #include "Fan.hpp"
+#include <memory>
+
+class LcdDisplay;
 
 class Controller {
-    Termomether termomether;  // OOD - it should read thermometer value periodicaly and setSpeed
-    Fan fan;
-    double targetTemperature;
-    bool running;
-
-    Controller(const Controller&);  // missing copy assignment operator
 public:
-    Controller(Termomether t, Fan f, double targetTemp);
-    ~Controller();
-    void setSpeed(int rpm);
-    int getSpeed() const; // non-const getter
-    void run();
-    void stop();
+    Controller(SlowThermometer, Fan, double, double, std::shared_ptr<LcdDisplay>);
+    void updateRpm();
+    void displayInfo();
 };
