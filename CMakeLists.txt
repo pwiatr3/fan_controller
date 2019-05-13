@@ -5,25 +5,28 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(FanController)
 
+add_compile_options(-Wall -Wextra -Wpedantic -g)
+include_directories(.)
+add_library(SlowThermometer-lib SlowThermometer/SlowThermometer.cpp)
+
 set(SRC_LIST
-    Controller.cpp
     Controller.hpp
-    Fan.cpp
+    Controller.cpp
     Fan.hpp
-    Termomether.cpp
-    Termomether.hpp
+    Fan.cpp
+    Thermometer.hpp
+    LcdDisplay.hpp
+    LcdDisplay.cpp
 )
 
-# include_directories(src)
 add_library(${PROJECT_NAME}-lib ${SRC_LIST})
 add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib pthread)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib SlowThermometer-lib pthread)
 
-# set(TEST_SRC_LIST
-#     test/PizzeriaTest.cpp
-#     test/test_main.cpp
-# )
+set(TEST_SRC_LIST
+    tests/FanTests.cpp
+    tests/ControllerTests.cpp
+)
 
-# link_libraries(gmock)
-# add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
-# target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib)
+add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
+target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib pthread)
