@@ -9,15 +9,11 @@ int main()
 try {
     SlowThermometer t;
     Fan f;
+    LcdDisplay lcdDisplay;
     double targetTemperature = 36.6;
     double tolerance = .5;
-    Controller oldController{t, f, targetTemperature, tolerance, nullptr};
-    oldController.updateRpm();
-    oldController.displayInfo();
-
-    Controller newController{t, f, targetTemperature, tolerance, std::shared_ptr<LcdDisplay>()};
-    newController.updateRpm();
-    newController.displayInfo();
+    Controller controller{t, f, targetTemperature, tolerance};
+    controller.updateRpm();
 
     return 0;
 } catch (const std::exception & e) {
