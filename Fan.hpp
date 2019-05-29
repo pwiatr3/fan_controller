@@ -5,11 +5,7 @@ class Fan {
 
 public:
     Fan();
-    Fan(const Fan&);
-    Fan(Fan&&);
 
     void setSpeed(int newRpm);
     int getSpeed();
-    bool disable();
-    bool enable();
 };
