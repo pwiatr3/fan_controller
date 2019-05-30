@@ -16,7 +16,7 @@ set(SRC_LIST
     Fan.cpp
     LcdDisplay.hpp
     LcdDisplay.cpp
-)
+        Thermometer.h)
 
 add_library(${PROJECT_NAME}-lib ${SRC_LIST})
 add_executable(${PROJECT_NAME} main.cpp)

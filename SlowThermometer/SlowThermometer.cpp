@@ -1,8 +1,7 @@
 #include "SlowThermometer.hpp"
 #include <random>
 
-double SlowThermometer::getTemperature() const
-{
+double SlowThermometer::getTemperature() const {
     std::random_device rd{};
     // https://en.cppreference.com/w/cpp/numeric/random/random_device
     // MinGW bug - deterministic results

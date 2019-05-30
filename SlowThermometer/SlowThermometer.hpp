@@ -1,6 +1,8 @@
 #pragma once
 
-class SlowThermometer {
+#include "Thermometer.h"
+
+class SlowThermometer : public Thermometer {
 public:
-    double getTemperature() const;
+    double getTemperature() const override;
 };

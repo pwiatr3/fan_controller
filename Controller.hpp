@@ -7,7 +7,11 @@ class LcdDisplay;
 
 class Controller {
 public:
-    Controller(SlowThermometer, Fan, double, double, std::shared_ptr<LcdDisplay>);
+    Controller(const Thermometer&, Fan&, double, double, std::shared_ptr<LcdDisplay> = nullptr);
     void updateRpm();
     void displayInfo();
+private:
+    const Thermometer& thermometer;
+    Fan& fan;
+    double targetTemp;
 };
