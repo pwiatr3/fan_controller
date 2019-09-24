@@ -5,8 +5,20 @@
 #include <memory>
 #include <iostream>
 
+void fun(const std::shared_ptr<SlowThermometer>& p) {
+    p->getTemperature();
+    p.reset(new SlowThermometer);
+}
+
 int main()
 try {
+    // std::unique_ptr<SlowThermometer> up{new SlowThermometer(10.0)};
+    auto up = std::make_shared<SlowThermometer>();
+    fun(up);
+    up->getTemperature();
+    // auto temp = up->getTemperature();
+
+
     SlowThermometer t;
     Fan f;
     double targetTemperature = 36.6;
@@ -15,9 +27,11 @@ try {
     oldController.updateRpm();
     oldController.displayInfo();
 
-    Controller newController{t, f, targetTemperature, tolerance, std::shared_ptr<LcdDisplay>()};
+    auto uptr = std::make_unique<LcdDisplay>();
+    Controller newController{t, f, targetTemperature, tolerance, std::move(uptr)};
     newController.updateRpm();
     newController.displayInfo();
+    uptr->print();
 
     return 0;
 } catch (const std::exception & e) {
