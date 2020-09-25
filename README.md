@@ -15,6 +15,9 @@
 
 ## Description
 
+ https://github.com/coders-school/fan_controller
+
+
 Your company needs a controller that can properly cool down some other devices. It will use 2 devices: a thermometer to read the temperature and a fan to control.
 
 Your architect has already proposed interfaces.

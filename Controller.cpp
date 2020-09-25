@@ -7,6 +7,8 @@ Controller::Controller(SlowThermometer,
                        std::shared_ptr<LcdDisplay>)
 {}
 
-void Controller::updateRpm() {}
+void Controller::updateRpm() {
+
+}
 
 void Controller::displayInfo() {}
