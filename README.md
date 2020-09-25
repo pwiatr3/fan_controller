@@ -26,7 +26,13 @@ The SlowThermometer will be used as a thermometer in your product. It provides w
 
 Fan must be controlled appropriately and must speed up when the temperature is too high or should be disabled when it is too low. Fan speed (in rpm - rotations per minute) can be set from 1000 to 3000. It can also be equal to 0, what means that the fan is disabled.
 
-The Controller require a termomether and a fan to work. Without them it does not work. It also needs a target temperature and a tolerance. When the temperature is in a range <targetTemperature - tolerance, targetTemperature + tolerance>, controller should keep the fan speed at 1000 rpm. When it is below targetTemperature - tolerance, the fan should be disabled. When it is above, the fan speed must must be adjusted by 1 rpm per each 0.001 degree. Max speed is 3000 rpm.
+The Controller require a termomether and a fan to work. Without them it does not work. It also needs a target temperature and a tolerance. When the temperature is in a range
+
+ <targetTemperature - tolerance, targetTemperature + tolerance>, controller should keep the fan speed at 1000 rpm.
+
+  When it is below targetTemperature - tolerance, the fan should be disabled.
+
+   When it is above, the fan speed must must be adjusted by 1 rpm per each 0.001 degree. Max speed is 3000 rpm.
 
 Controller can have an LCD display, which displays current temperature, target temperature and a fan speed. Controller, however, can work without a display.
 

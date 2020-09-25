@@ -14,18 +14,37 @@ TEST_CASE("Controller - setSpeed() behavior", "[Controller]") {
 
     constexpr double targetTemperature = 36.6;
     constexpr double tolerance = .5;
-    // Controller c{st, f, targetTemperature, tolerance, nullptr};
+    Controller c{st, f, targetTemperature, tolerance, nullptr};
     // oldController.updateRpm();
     // oldController.displayInfo();
 
     SECTION("is update of speed working for 0 C") {
-        CHECK(f.getSpeed() == 0);
+        CHECK(f.getSpeed() == disabledRpm);
     }
 
-    SECTION("test ") {
+    SECTION("Given temperature target fan controller should set rpm to 1000 ") {
+        st.setTemperature(targetTemperature);
+        c.updateRpm();
+        CHECK(f.getSpeed() == minRpm);
+    }
 
+     SECTION("Given temperature range fan controller should set rpm to 1000 ") {
+        st.setTemperature(targetTemperature - tolerance);
+        c.updateRpm();
+        CHECK(f.getSpeed() == minRpm);
+    }
 
-        CHECK(true);
+     SECTION("Given temperature below temp-tolerance fan controller should set rpm to 0") {
+        st.setTemperature(targetTemperature - tolerance -1);
+        c.updateRpm();
+        CHECK(f.getSpeed() == disabledRpm);
+    }
+
+    SECTION("Given temperature below temp-tolerance fan controller should set rpm to 0") {
+        int beforeSpeed = f.getSpeed();
+        st.setTemperature(targetTemperature + tolerance + 2);
+        c.updateRpm();
+        CHECK(f.getSpeed() == 2000);
     }
 
 
