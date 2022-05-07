@@ -1,6 +1,6 @@
 #include "Controller.hpp"
 
-Controller::Controller(SlowThermometer,
+Controller::Controller(IThermometer&,
                        Fan,
                        double,
                        double,
