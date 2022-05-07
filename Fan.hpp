@@ -1,9 +1,11 @@
 #pragma once
 
+#include "IFan.hpp"
+
 constexpr int minRpm = 1000;
 constexpr int maxRpm = 3000;
 
-class Fan {
+class Fan : public IFan {
     int rpm = 0;
 
 public:
@@ -11,8 +13,8 @@ public:
     Fan(const Fan&);
     Fan(Fan&&);
 
-    void setSpeed(int newRpm);
-    int getSpeed();
-    bool disable();
-    bool enable();
+    void setSpeed(int newRpm) override;
+    int getSpeed() override;
+    bool disable() override;
+    bool enable() override;
 };

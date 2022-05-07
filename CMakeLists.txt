@@ -16,6 +16,8 @@ set(SRC_LIST
     Fan.cpp
     LcdDisplay.hpp
     LcdDisplay.cpp
+    IThermometer.hpp
+    IThermometer.cpp
 )
 
 add_library(${PROJECT_NAME}-lib ${SRC_LIST})

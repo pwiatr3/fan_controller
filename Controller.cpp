@@ -1,7 +1,7 @@
 #include "Controller.hpp"
 
 Controller::Controller(IThermometer&,
-                       Fan,
+                       IFan&,
                        double,
                        double,
                        std::shared_ptr<LcdDisplay>)
