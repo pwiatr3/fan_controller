@@ -3,5 +3,5 @@
 class IThermometer {
 public:
     virtual ~IThermometer();
-    virtual double getTemperature() const;
+    virtual double getTemperature() const = 0;
 };
