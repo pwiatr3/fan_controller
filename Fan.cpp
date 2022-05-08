@@ -10,7 +10,7 @@ Fan::Fan(Fan&& other) : rpm(std::move(other.rpm)) {}
 
 Fan::Fan(const Fan& other) : rpm(other.rpm) {}
 
-void Fan::setSpeed(int newRpm) {
+void Fan::setSpeed(const int newRpm) {
     if ((newRpm < minRpm and newRpm != 0) or newRpm > maxRpm) {
         throw std::invalid_argument("Invalid speed");
     }
@@ -24,7 +24,7 @@ void Fan::setSpeed(int newRpm) {
     }
 }
 
-int Fan::getSpeed() {
+int Fan::getSpeed() const {
     return rpm;
 }
 

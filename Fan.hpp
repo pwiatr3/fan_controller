@@ -13,8 +13,8 @@ public:
     Fan(const Fan&);
     Fan(Fan&&);
 
-    void setSpeed(int newRpm) override;
-    int getSpeed() override;
+    void setSpeed(const int newRpm) override;
+    int getSpeed() const override;
     bool disable() override;
     bool enable() override;
 };
