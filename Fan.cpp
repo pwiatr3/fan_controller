@@ -2,14 +2,6 @@
 #include <stdexcept>
 #include <cmath>
 
-Fan::Fan() {
-    rpm = 0;
-}
-
-Fan::Fan(Fan&& other) : rpm(std::move(other.rpm)) {}
-
-Fan::Fan(const Fan& other) : rpm(other.rpm) {}
-
 void Fan::setSpeed(const int newRpm) {
     if ((newRpm < minRpm and newRpm != 0) or newRpm > maxRpm) {
         throw std::invalid_argument("Invalid speed");

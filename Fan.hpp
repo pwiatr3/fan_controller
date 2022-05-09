@@ -9,10 +9,6 @@ class Fan : public IFan {
     int rpm = 0;
 
 public:
-    Fan();
-    Fan(const Fan&);
-    Fan(Fan&&);
-
     void setSpeed(const int newRpm) override;
     int getSpeed() const override;
     bool disable() override;

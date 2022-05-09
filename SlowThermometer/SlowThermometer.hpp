@@ -1,5 +1,6 @@
 #pragma once
-#include "IThermometer.hpp"
+
+#include "../IThermometer.hpp"
 
 class SlowThermometer : public IThermometer {
 public:
