@@ -4,7 +4,7 @@ Controller::Controller(IThermometer&,
                        IFan&,
                        double,
                        double,
-                       std::shared_ptr<LcdDisplay>)
+                       const std::shared_ptr<LcdDisplay>&)
 {}
 
 void Controller::updateRpm() {}

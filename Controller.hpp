@@ -9,7 +9,7 @@ class LcdDisplay;
 
 class Controller {
 public:
-    Controller(IThermometer&, IFan& , double, double, std::shared_ptr<LcdDisplay>);
+    Controller(IThermometer&, IFan& , double, double, const std::shared_ptr<LcdDisplay>&);
     void updateRpm();
     void displayInfo();
 };
