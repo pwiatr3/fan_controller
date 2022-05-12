@@ -15,7 +15,7 @@ try {
     oldController.updateRpm();
     oldController.displayInfo();
 
-    Controller newController{t, f, targetTemperature, tolerance, std::shared_ptr<LcdDisplay>()};
+    Controller newController{t, f, targetTemperature, tolerance, std::make_shared<LcdDisplay>()};
     newController.updateRpm();
     newController.displayInfo();
 
